@@ -22,4 +22,10 @@ class FoodTruck
       @inventory[item] += amount
     end
   end
+
+  def potential_revenue
+    @inventory.sum do |item, stock|
+      item.price.delete("$").to_f * stock
+    end
+  end
 end

@@ -22,4 +22,17 @@ class Event
       food_truck.inventory.keys.include?(item)
     end
   end
+
+  def total_inventory
+    @food_trucks.each_with_object({}) do |truck, hash|
+      truck.inventory.each do |item, stock|
+        if hash[item].nil?
+          hash[item] = {quantity: stock, food_trucks: [truck]}
+        else
+          hash[item][:quantity] += stock
+          hash[item][:food_trucks] << truck
+        end
+      end
+    end
+  end
 end
