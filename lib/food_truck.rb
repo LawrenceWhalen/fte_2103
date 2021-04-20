@@ -16,6 +16,10 @@ class FoodTruck
   end
 
   def stock(item, amount)
-    @inventory[item] = amount
+    if @inventory[item].nil?
+      @inventory[item] = amount
+    else
+      @inventory[item] += amount
+    end
   end
 end
