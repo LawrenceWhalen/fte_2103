@@ -6,4 +6,8 @@ class Event
     @name = name
     @food_trucks = []
   end
+
+  def add_food_truck(food_truck)
+    @food_trucks.push(food_truck)
+  end
 end
