@@ -52,4 +52,23 @@ class Event
       end
     end.uniq.sort
   end
+
+  def sell(item, amount)
+    if total_inventory[item][:quantity] < amount
+      false
+    else
+      while amount > 0
+        food_trucks_that_sell(item).each do |truck|
+          if truck.check_stock(item) > amount
+            truck.set_stock(item, truck.check_stock(item) - amount)
+            amount = 0
+          else
+            amount = (amount - truck.check_stock(item))
+            truck.set_stock(item, 0)
+          end
+        end
+      end
+      true
+    end
+  end
 end

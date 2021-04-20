@@ -28,4 +28,7 @@ class FoodTruck
       item.price.delete("$").to_f * stock
     end
   end
+  def set_stock(item, amount)
+    @inventory[item] = amount
+  end
 end
