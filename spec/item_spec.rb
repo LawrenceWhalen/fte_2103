@@ -7,5 +7,11 @@ RSpec.describe 'Item' do
 
       expect(item.class).to eq(Item)
     end
+    it 'initializes the attribute hash' do
+      item = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
+
+      expect(item.name).to eq('Peach Pie (Slice)')
+      expect(item.price).to eq('$3.75')
+    end
   end
 end
