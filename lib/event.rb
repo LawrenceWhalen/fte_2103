@@ -44,4 +44,12 @@ class Event
       item
     end
   end
+
+  def sorted_item_list
+    @food_trucks.each_with_object([]) do |truck, array|
+      truck.inventory.each do |item, quantity|
+        array << item.name
+      end
+    end.uniq.sort
+  end
 end
